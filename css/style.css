@@ -1,11 +1,11 @@
 *{margin:0 auto;padding:0px;outline:none;}
 .parent{width:100%;float:left;max-height:350px;overflow:hidden;}
 .parent.scrollable{position:relative;}
-.wrapInner{width:100%;float:left;-ms-transition: all 0.4s ease;-webkit-transition: all 0.4s ease;transition: all 0.4s ease;}
+.wrapInner{width:100%;float:left;-ms-transition: all 0.4s ease-in-out;-webkit-transition: all 0.4s ease-in-out;transition: all 0.4s ease-in-out;}
 .child{width:100%;float:left;height:3000px;background:#ccc;}
 .scrollTrack{width:17px;height:100%;position:absolute;top:0px;background:#333;opacity:0;-ms-transition: all 0.3s ease;-webkit-transition: all 0.3s ease;transition: all 0.3s ease;}
 .scrollTrack.scroll{opacity:1 !important;}
 .scrollTrack.active{opacity:1;}
 .scrollTrack.left{left:0px;}
 .scrollTrack.right{right:0px;}
-.scrollTrack .scrollThumb{width:100%;height:50px;background:#777;position:absolute;left:0px;-ms-transition: all 0.4s ease;-webkit-transition: all 0.4s ease;transition: all 0.4s ease;}
+.scrollTrack .scrollThumb{width:100%;height:50px;background:#777;position:absolute;top:0px;left:0px;-ms-transition: all 0.4s ease-in-out;-webkit-transition: all 0.4s ease-in-out;transition: all 0.4s ease-in-out;}

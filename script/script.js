@@ -1,16 +1,17 @@
 $(function(){
-	var counter = 0, scrollRatio, scrollFactor = 200;
+	var steps = 0, scrollThumbHeight, scrollSteps, scrollable = 100, scrollTrackFactor = 30;
 	$('.scrollable').wrapInner('<div class="wrapInner"></div>');
 	$('.scrollable').on('mouseenter', function(){
 		var childH = $('.wrapInner').height();
 		var parentH = $(this).height();
 		if(childH > parentH){
-			scrollRatio = Math.ceil(childH / scrollFactor);
-			var scrollThumb = Math.ceil(parentH / scrollRatio);
+			scrollSteps = Math.ceil((childH - parentH)/ scrollable);
+			scrollThumbHeight = Math.ceil(parentH / Math.ceil(childH / parentH));
+			scrollTrackFactor = Math.ceil((parentH - scrollThumbHeight) / scrollSteps);
 			if($(this).children('.scrollTrack').length == 0){
 				var elemScrollTrack = $('<div/>', {class:'scrollTrack'});
 				var elemScrollThumb = $('<div/>', {class:'scrollThumb'});
-				elemScrollThumb.css('height', scrollThumb+'px');
+				elemScrollThumb.css('height', scrollThumbHeight+'px');
 				elemScrollTrack.append(elemScrollThumb).attr({'data-height': childH+'px'});
 				$(this).append(elemScrollTrack);
 			}
@@ -21,15 +22,14 @@ $(function(){
 		$(this).children('.scrollTrack').removeClass('active');
 	});
 	$('.scrollable').on('mousewheel', function(event){
-		if(event.deltaY == 1 && counter > 0){
-			counter--;
-		}else if(event.deltaY == -1 && counter < scrollRatio){
-			counter++;
+		if(event.deltaY == 1 && steps > 0){
+			steps--;
+		}else if(event.deltaY == -1 && steps < scrollSteps){
+			steps++;
 		}
 		if($(this).children('.scrollTrack').length != 0){
-			if(){
-				$(this).children('.scrollTrack')
-			}
+			$(this).find('.scrollThumb').css('top', (steps * scrollTrackFactor)+'px');
+			$(this).find('.wrapInner').css('margin-top', '-'+(steps * scrollable)+'px');
 		}
 	});
 });
